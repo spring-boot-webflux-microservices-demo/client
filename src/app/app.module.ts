@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
 import { GadgetListComponent } from './gadget-list/gadget-list.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolbarModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,13 @@ import { GadgetListComponent } from './gadget-list/gadget-list.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatInputModule,
+    MatListModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
