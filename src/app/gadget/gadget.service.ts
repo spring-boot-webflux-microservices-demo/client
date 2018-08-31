@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
-@Injectable({ providedIn: 'root' })
-export class UserService {
+@Injectable({
+  providedIn: 'root'
+})
+export class GadgetService {
 
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any> {
-    return this.http.get('//localhost:8081/api1/findAllUsers');
+    return this.http.get('//localhost:8082/api2/findAllGadgets');
   }
+
 }
