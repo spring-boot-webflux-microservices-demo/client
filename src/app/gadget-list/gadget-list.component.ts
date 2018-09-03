@@ -9,10 +9,11 @@ import {GadgetService} from '../gadget/gadget.service';
 export class GadgetListComponent implements OnInit {
 
   gadgets: Array<any>;
-  constructor(private gadgetServics: GadgetService) { }
+  gadgetColumns: string[] = ['position', 'type', 'specifications'];
+  constructor(private gadgetService: GadgetService) { }
 
   ngOnInit() {
-    this.gadgetServics.getAll().subscribe(g => this.gadgets = g);
+    this.gadgetService.getAll().subscribe(g => this.gadgets = g);
   }
 
 }
