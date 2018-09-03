@@ -6,7 +6,15 @@ import {HttpClientModule} from '@angular/common/http';
 import { UserListComponent } from './user-list/user-list.component';
 import { GadgetListComponent } from './gadget-list/gadget-list.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatTabsModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatInputModule,
+  MatListModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,6 +31,7 @@ import {MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatTabsMo
     MatInputModule,
     MatListModule,
     MatToolbarModule,
+    MatTableModule,
     MatTabsModule
   ],
   providers: [],
