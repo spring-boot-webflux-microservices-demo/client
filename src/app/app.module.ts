@@ -9,24 +9,31 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatCardModule,
+  MatDialogModule,
   MatInputModule,
   MatListModule,
   MatTableModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
+import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    GadgetListComponent
+    GadgetListComponent,
+    AddUserDialogComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatDialogModule,
     MatButtonModule,
+    ReactiveFormsModule,
+    FormsModule,
     MatCardModule,
     MatInputModule,
     MatListModule,
@@ -34,6 +41,7 @@ import {
     MatTableModule,
     MatTabsModule
   ],
+  entryComponents: [AddUserDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

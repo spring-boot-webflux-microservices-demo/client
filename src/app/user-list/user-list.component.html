@@ -1,4 +1,4 @@
-<button id="addUser" mat-raised-button color="primary">Add User</button>
+<button id="addUser" mat-raised-button color="primary" (click)="openDialog()">Add User</button>
 
 <table mat-table [dataSource]="users" class="mat-elevation-z8">
   <ng-container matColumnDef="position">
