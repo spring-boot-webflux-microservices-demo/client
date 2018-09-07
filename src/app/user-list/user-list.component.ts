@@ -25,11 +25,7 @@ export class UserListComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     const dialogRef = this.dialog.open(AddUserDialogComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(data => this.addUserIntoTable('{\n' +
-      '\t"firstName": "Petras",\n' +
-      '\t"lastName": "Petraitis",\n' +
-      '\t"age": 34\n' +
-      '}'));
+    dialogRef.afterClosed().subscribe(data => this.addUserIntoTable(data));
   }
 
   private addUserIntoTable(newUser) {
