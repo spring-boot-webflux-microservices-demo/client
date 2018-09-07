@@ -29,7 +29,6 @@ export class UserListComponent implements OnInit {
   }
 
   private addUserIntoTable(newUser) {
-    console.log(newUser);
     this.userService.saveUser(newUser).subscribe(saved => {
       this.users.push(saved);
     });
