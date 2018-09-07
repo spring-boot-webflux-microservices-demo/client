@@ -29,7 +29,7 @@ export class AddUserDialogComponent implements OnInit {
     this.form = this.fb.group({
       firstName: '',
       lastName: '',
-      age: 0
+      age: ''
     });
   }
 
