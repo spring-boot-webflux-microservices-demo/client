@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user/user.service';
 import {MatDialog, MatDialogConfig} from '@angular/material';
 import {AddUserDialogComponent} from '../add-user-dialog/add-user-dialog.component';
@@ -12,12 +12,12 @@ export class UserListComponent implements OnInit {
 
   users: Array<any>;
   userColumns: string[] = ['position', 'firstName', 'lastName', 'age', 'actions'];
-  constructor(private userService: UserService, private dialog: MatDialog) {}
+
+  constructor(private userService: UserService, private dialog: MatDialog) {
+  }
 
   ngOnInit() {
-    this.userService.getAll().subscribe(u => {
-      this.users = u;
-    });
+    this.getAllUsersInTable();
   }
 
   openDialog() {
@@ -25,12 +25,21 @@ export class UserListComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     const dialogRef = this.dialog.open(AddUserDialogComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(data => this.addUserIntoTable(data));
+    dialogRef.afterClosed().subscribe(data => {
+      this.addUserIntoTable(data);
+      this.getAllUsersInTable();
+    });
   }
 
   private addUserIntoTable(newUser) {
     this.userService.saveUser(newUser).subscribe(saved => {
       this.users.push(saved);
+    });
+  }
+
+  private getAllUsersInTable() {
+    this.userService.getAll().subscribe(u => {
+      this.users = u;
     });
   }
 }
