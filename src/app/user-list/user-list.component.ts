@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user/user.service';
 import {MatDialog, MatDialogConfig, MatTableDataSource} from '@angular/material';
 import {AddUserDialogComponent} from '../add-user-dialog/add-user-dialog.component';
-import {User} from '../user/user';
+import {UserDatasource} from '../user/user.datasource';
 
 @Component({
   selector: 'app-user-list',
@@ -12,13 +12,14 @@ import {User} from '../user/user';
 export class UserListComponent implements OnInit {
 
   userColumns: string[] = ['position', 'firstName', 'lastName', 'age', 'actions'];
-  users = new MatTableDataSource<User>();
+  users: UserDatasource;
 
   constructor(private userService: UserService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.getAllUsersInTable();
+    this.users = new UserDatasource(this.userService);
+    this.users.getAllUsersInTable();
   }
 
   openDialog() {
@@ -27,20 +28,8 @@ export class UserListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(AddUserDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(data => {
-      this.addUserIntoTable(data);
-      this.getAllUsersInTable();
+      this.users.addUserIntoTable(data);
     });
   }
 
-  private addUserIntoTable(newUser) {
-    this.userService.saveUser(newUser).subscribe(saved => {
-      this.users.data.push(saved);
-    });
-  }
-
-  private getAllUsersInTable() {
-    this.userService.getAll().subscribe(u => {
-      this.users.data = u;
-    });
-  }
 }
