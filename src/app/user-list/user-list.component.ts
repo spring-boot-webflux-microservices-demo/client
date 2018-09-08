@@ -12,14 +12,14 @@ import {UserDatasource} from '../user/user.datasource';
 export class UserListComponent implements OnInit {
 
   userColumns: string[] = ['position', 'firstName', 'lastName', 'age', 'actions'];
-  users: UserDatasource;
+  dataSource: UserDatasource;
 
   constructor(private userService: UserService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.users = new UserDatasource(this.userService);
-    this.users.getAllUsersInTable();
+    this.dataSource = new UserDatasource(this.userService);
+    this.dataSource.getAllUsersInTable();
   }
 
   openDialog() {
@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(AddUserDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(data => {
-      this.users.addUserIntoTable(data);
+      this.dataSource.addUserIntoTable(data);
     });
   }
 
