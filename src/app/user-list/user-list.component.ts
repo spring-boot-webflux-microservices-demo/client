@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user/user.service';
-import {MatDialog, MatDialogConfig} from '@angular/material';
+import {MatDialog, MatDialogConfig, MatTableDataSource} from '@angular/material';
 import {AddUserDialogComponent} from '../add-user-dialog/add-user-dialog.component';
+import {User} from '../user/user';
 
 @Component({
   selector: 'app-user-list',
@@ -10,8 +11,8 @@ import {AddUserDialogComponent} from '../add-user-dialog/add-user-dialog.compone
 })
 export class UserListComponent implements OnInit {
 
-  users: Array<any>;
   userColumns: string[] = ['position', 'firstName', 'lastName', 'age', 'actions'];
+  users = new MatTableDataSource<User>();
 
   constructor(private userService: UserService, private dialog: MatDialog) {
   }
@@ -33,13 +34,13 @@ export class UserListComponent implements OnInit {
 
   private addUserIntoTable(newUser) {
     this.userService.saveUser(newUser).subscribe(saved => {
-      this.users.push(saved);
+      this.users.data.push(saved);
     });
   }
 
   private getAllUsersInTable() {
     this.userService.getAll().subscribe(u => {
-      this.users = u;
+      this.users.data = u;
     });
   }
 }
