@@ -10,7 +10,7 @@
       <span *ngIf="!row.editing">{{row.user.firstName}}</span>
       <span *ngIf="row.editing">
         <mat-form-field>
-          <input matInput [ngModel]="row.user.firstName">
+          <input [autofocus]="row.focus" matInput [ngModel]="row.user.firstName">
         </mat-form-field>
       </span>
     </td>
@@ -22,7 +22,7 @@
       <span *ngIf="!row.editing">{{row.user.lastName}}</span>
       <span *ngIf="row.editing">
         <mat-form-field>
-          <input matInput [ngModel]="row.user.lastName">
+          <input  matInput [ngModel]="row.user.lastName">
         </mat-form-field>
       </span>
     </td>

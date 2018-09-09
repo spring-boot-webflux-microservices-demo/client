@@ -3,6 +3,7 @@ import {BehaviorSubject, Observable, of, pipe} from 'rxjs';
 import {UserService} from './user.service';
 import {catchError, finalize} from 'rxjs/operators';
 import {UserRow} from './user-row';
+import {EmptyUser} from './empty-user';
 
 export class UserDatasource implements DataSource<UserRow> {
   private userRows: UserRow[];
@@ -10,6 +11,7 @@ export class UserDatasource implements DataSource<UserRow> {
   private usersSubject = new BehaviorSubject<UserRow[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
+  private emptyUserRow: UserRow;
 
   constructor(private userService: UserService) {
   }
@@ -23,13 +25,18 @@ export class UserDatasource implements DataSource<UserRow> {
         this.usersSubject.next(this.userRows);
       });
   }
-/*
   addUserIntoTable(newUser) {
-    this.userService.saveUser(newUser).subscribe(saved => {
+    console.log('new table row should be added');
+    this.emptyUserRow = new UserRow(new EmptyUser, this.userService);
+    this.emptyUserRow.editing = true;
+    this.emptyUserRow.focus = true;
+    this.userRows.push(this.emptyUserRow);
+    this.usersSubject.next(this.userRows);
+    /*this.userService.saveUser(newUser).subscribe(saved => {
       this.usersSubject.next(saved);
       this.getAllUsersInTable();
-    });
-  }*/
+    });*/
+  }
 
   connect(collectionViewer: CollectionViewer): Observable<UserRow[]> {
     console.log('Connecting to datasource');

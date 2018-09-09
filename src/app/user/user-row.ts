@@ -4,10 +4,9 @@ import {UserService} from './user.service';
 
 export class UserRow implements UserActions {
   editing: boolean;
+  focus: boolean;
 
   constructor(private user: User, private userService: UserService) {
-    this.user = user;
-    this.userService = userService;
   }
 
   cancel(): void {
@@ -17,6 +16,7 @@ export class UserRow implements UserActions {
     console.log('edit confirmed');
     console.log(updatedUser);
     this.editing = false;
+    this.focus = false;
     this.userService.saveUser(updatedUser).subscribe(saved => {
       console.log('saved successfully: ');
       console.log(saved);
@@ -32,6 +32,7 @@ export class UserRow implements UserActions {
   startEdit(): void {
     console.log('editing mode');
     this.editing = true;
+    this.focus = true;
   }
 
 }
