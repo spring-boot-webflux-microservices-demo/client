@@ -48,7 +48,7 @@
       <button *ngIf="!row.editing" mat-icon-button color="primary" (click)="row.startEdit()">
         <i class="material-icons">create</i>
       </button>
-      <button *ng`If="row.editing" mat-icon-button color="primary" (click)="row.confirmEditCreate(row.user)">
+      <button *ngIf="row.editing" mat-icon-button color="primary" (click)="row.confirmEditCreate(row.user)">
         <i class="material-icons">done</i>
       </button>
       <button mat-icon-button color="primary" focusable="false" (click)="row.delete()">
