@@ -6,7 +6,7 @@ export class UserRow implements UserActions {
   editing: boolean;
   focus: boolean;
 
-  constructor(private user: User, private userService: UserService) {
+  constructor(public user: User, private userService: UserService) {
   }
 
   cancel(): void {
@@ -24,9 +24,6 @@ export class UserRow implements UserActions {
       // this.getAllUsersInTable();
     });
     return false;
-  }
-
-  delete(): void {
   }
 
   startEdit(): void {

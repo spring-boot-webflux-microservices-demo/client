@@ -51,7 +51,7 @@
       <button *ngIf="row.editing" mat-icon-button color="primary" (click)="row.confirmEditCreate(row.user)">
         <i class="material-icons">done</i>
       </button>
-      <button mat-icon-button color="primary" focusable="false" (click)="row.delete()">
+      <button mat-icon-button color="primary" focusable="false" (click)="dataSource.delete(row.user)">
         <i class="material-icons">delete</i>
       </button>
     </td>

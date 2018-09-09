@@ -20,4 +20,8 @@ export class UserService {
       }
     });
   }
+
+  deleteUser(user: User): Observable<any> {
+    return this.http.delete('//localhost:8081/api1/deleteUser/' + user.id);
+  }
 }

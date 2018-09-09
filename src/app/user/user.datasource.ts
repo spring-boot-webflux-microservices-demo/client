@@ -4,6 +4,7 @@ import {UserService} from './user.service';
 import {catchError, finalize} from 'rxjs/operators';
 import {UserRow} from './user-row';
 import {EmptyUser} from './empty-user';
+import {User} from './user';
 
 export class UserDatasource implements DataSource<UserRow> {
   private userRows: UserRow[];
@@ -25,6 +26,7 @@ export class UserDatasource implements DataSource<UserRow> {
         this.usersSubject.next(this.userRows);
       });
   }
+
   addUserIntoTable(newUser) {
     console.log('new table row should be added');
     this.emptyUserRow = new UserRow(new EmptyUser, this.userService);
@@ -36,6 +38,13 @@ export class UserDatasource implements DataSource<UserRow> {
       this.usersSubject.next(saved);
       this.getAllUsersInTable();
     });*/
+  }
+
+  delete(user: User): void {
+    this.userService.deleteUser(user).subscribe(() => {
+      this.userRows = this.userRows.filter(item => item.user !== user);
+      this.usersSubject.next(this.userRows);
+    });
   }
 
   connect(collectionViewer: CollectionViewer): Observable<UserRow[]> {
