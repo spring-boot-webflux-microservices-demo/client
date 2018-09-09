@@ -19,7 +19,7 @@ export class UserDatasource implements DataSource<UserRow> {
       catchError(() => of([])),
       finalize(() => this.loadingSubject.next(false)))
       .subscribe(users => {
-        this.userRows = users.map(a => new UserRow(a));
+        this.userRows = users.map(a => new UserRow(a, this.userService));
         this.usersSubject.next(this.userRows);
       });
   }
