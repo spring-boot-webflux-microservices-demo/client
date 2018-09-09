@@ -1,18 +1,12 @@
 import {UserActions} from './user-actions';
 import {User} from './user';
 
-export class UserRow implements User, UserActions {
-  id: string;
-  firstName: string;
-  lastName: string;
-  age: number;
+export class UserRow implements UserActions {
+  user: User;
   editing: boolean;
 
   constructor(user: User) {
-    this.id = user.id;
-    this.firstName = user.firstName;
-    this.lastName = user.lastName;
-    this.age = user.age;
+    this.user = user;
   }
 
   cancel(): void {

@@ -7,10 +7,10 @@
   <ng-container matColumnDef="firstName">
     <th mat-header-cell *matHeaderCellDef> First Name</th>
     <td mat-cell *matCellDef="let row">
-      <span *ngIf="!row.editing">{{row.firstName}}</span>
+      <span *ngIf="!row.editing">{{row.user.firstName}}</span>
       <span *ngIf="row.editing">
         <mat-form-field>
-          <input matInput [ngModel]="row.firstName">
+          <input matInput [ngModel]="row.user.firstName">
         </mat-form-field>
       </span>
     </td>
@@ -19,10 +19,10 @@
   <ng-container matColumnDef="lastName">
     <th mat-header-cell *matHeaderCellDef> Last Name</th>
     <td mat-cell *matCellDef="let row">
-      <span *ngIf="!row.editing">{{row.lastName}}</span>
+      <span *ngIf="!row.editing">{{row.user.lastName}}</span>
       <span *ngIf="row.editing">
         <mat-form-field>
-          <input matInput [ngModel]="row.lastName">
+          <input matInput [ngModel]="row.user.lastName">
         </mat-form-field>
       </span>
     </td>
@@ -31,10 +31,10 @@
   <ng-container matColumnDef="age">
     <th mat-header-cell *matHeaderCellDef> Age</th>
     <td mat-cell *matCellDef="let row">
-      <span *ngIf="!row.editing">{{row.age}}</span>
+      <span *ngIf="!row.editing">{{row.user.age}}</span>
       <span *ngIf="row.editing">
         <mat-form-field>
-          <input matInput type="number" [ngModel]="row.age">
+          <input matInput type="number" [ngModel]="row.user.age">
         </mat-form-field>
       </span>
     </td>
