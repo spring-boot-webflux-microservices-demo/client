@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {UserService} from '../user/user.service';
-import {MatDialog, MatDialogConfig, MatTableDataSource} from '@angular/material';
+import {MatDialog, MatDialogConfig} from '@angular/material';
 import {AddUserDialogComponent} from '../add-user-dialog/add-user-dialog.component';
 import {UserDatasource} from '../user/user.datasource';
 
@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(AddUserDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(data => {
-      this.dataSource.addUserIntoTable(data);
+      // this.dataSource.addUserIntoTable(data);
     });
   }
 
