@@ -21,6 +21,14 @@ export class UserService {
     });
   }
 
+  updateUser(user: User): Observable<any> {
+    return this.http.put('//localhost:8081/api1/updateUser/' + user.id, user, {
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
+    });
+  }
+
   deleteUser(user: User): Observable<any> {
     return this.http.delete('//localhost:8081/api1/deleteUser/' + user.id);
   }

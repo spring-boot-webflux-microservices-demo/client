@@ -37,14 +37,19 @@ export class UserDatasource implements DataSource<UserRow> {
   }
 
   add(row: UserRow): void {
-    if (row.user.id === undefined) {
-      this.userService.saveUser(row.user).subscribe(u => {
-        row.editing = false;
-        row.focus = false;
-        console.log('after save');
-        console.log(row);
-      });
-    }
+    row.editing = false;
+    row.focus = false;
+    row.user.id === undefined ? this.saveNewUser(row.user) : this.updateExistingUser(row.user);
+  }
+
+  private saveNewUser(user: User): void {
+    this.userService.saveUser(user).subscribe(u => {
+    });
+  }
+
+  private updateExistingUser(user: User): void {
+    this.userService.updateUser(user).subscribe(u => {
+    });
   }
 
   delete(user: User): void {
