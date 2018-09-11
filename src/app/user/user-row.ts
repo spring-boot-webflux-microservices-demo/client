@@ -13,13 +13,9 @@ export class UserRow implements UserActions {
   }
 
   confirmEditCreate(updatedUser: User): boolean {
-    console.log('edit confirmed');
-    console.log(updatedUser);
     this.editing = false;
     this.focus = false;
     this.userService.saveUser(updatedUser).subscribe(saved => {
-      console.log('saved successfully: ');
-      console.log(saved);
       // this.usersSubject.next(saved);
       // this.getAllUsersInTable();
     });

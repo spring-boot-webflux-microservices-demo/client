@@ -28,7 +28,7 @@ export class UserListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(AddUserDialogComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(data => {
-      // this.dataSource.addUserIntoTable(data);
+      // this.dataSource.addEmptyUser(data);
     });
   }
 

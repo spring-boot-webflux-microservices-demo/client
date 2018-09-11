@@ -10,7 +10,7 @@
       <span *ngIf="!row.editing">{{row.user.firstName}}</span>
       <span *ngIf="row.editing">
         <mat-form-field>
-          <input [autofocus]="row.focus" matInput [ngModel]="row.user.firstName">
+          <input [autofocus]="row.focus" matInput [(ngModel)]="row.user.firstName">
         </mat-form-field>
       </span>
     </td>
@@ -22,7 +22,7 @@
       <span *ngIf="!row.editing">{{row.user.lastName}}</span>
       <span *ngIf="row.editing">
         <mat-form-field>
-          <input  matInput [ngModel]="row.user.lastName">
+          <input  matInput [(ngModel)]="row.user.lastName">
         </mat-form-field>
       </span>
     </td>
@@ -34,7 +34,7 @@
       <span *ngIf="!row.editing">{{row.user.age}}</span>
       <span *ngIf="row.editing">
         <mat-form-field>
-          <input matInput type="number" [ngModel]="row.user.age">
+          <input matInput type="number" [(ngModel)]="row.user.age">
         </mat-form-field>
       </span>
     </td>
@@ -42,13 +42,13 @@
 
   <ng-container matColumnDef="actions">
     <th mat-header-cell *matHeaderCellDef>
-      <button mat-icon-button color="accent" (click)="dataSource.addUserIntoTable()"><i class="material-icons">add</i></button>
+      <button mat-icon-button color="accent" (click)="dataSource.addEmptyUser()"><i class="material-icons">add</i></button>
     </th>
     <td mat-cell *matCellDef="let row">
       <button *ngIf="!row.editing" mat-icon-button color="primary" (click)="row.startEdit()">
         <i class="material-icons">create</i>
       </button>
-      <button *ngIf="row.editing" mat-icon-button color="primary" (click)="row.confirmEditCreate(row.user)">
+      <button *ngIf="row.editing" mat-icon-button color="primary" (click)="dataSource.add(row)">
         <i class="material-icons">done</i>
       </button>
       <button mat-icon-button color="primary" focusable="false" (click)="dataSource.delete(row.user)">

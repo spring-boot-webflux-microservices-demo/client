@@ -27,17 +27,24 @@ export class UserDatasource implements DataSource<UserRow> {
       });
   }
 
-  addUserIntoTable(newUser) {
+  addEmptyUser() {
     console.log('new table row should be added');
     this.emptyUserRow = new UserRow(new EmptyUser, this.userService);
     this.emptyUserRow.editing = true;
     this.emptyUserRow.focus = true;
     this.userRows.push(this.emptyUserRow);
     this.usersSubject.next(this.userRows);
-    /*this.userService.saveUser(newUser).subscribe(saved => {
-      this.usersSubject.next(saved);
-      this.getAllUsersInTable();
-    });*/
+  }
+
+  add(row: UserRow): void {
+    if (row.user.id === undefined) {
+      this.userService.saveUser(row.user).subscribe(u => {
+        row.editing = false;
+        row.focus = false;
+        console.log('after save');
+        console.log(row);
+      });
+    }
   }
 
   delete(user: User): void {
