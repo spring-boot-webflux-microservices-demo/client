@@ -41,10 +41,10 @@ describe(`FakeHttpClientResponses`, () => {
   it('should save user', () => {
     const userService = TestBed.get(UserService);
     const http = TestBed.get(HttpTestingController);
-    let expectedResponse = null;
+    let response = null;
 
     userService.saveUser(new UserMock()).subscribe(data => {
-      expectedResponse = data;
+      response = data;
     });
 
     const responseMock = {id: 'savedId', firstName: 'savedFirstName', lastName: 'savedLastName', age: 1};
@@ -53,7 +53,7 @@ describe(`FakeHttpClientResponses`, () => {
       method: 'POST'
     }).flush(responseMock);
 
-    expect(expectedResponse).toEqual(responseMock);
+    expect(response).toEqual(responseMock);
   });
 
   class UserMock implements User {
