@@ -20,6 +20,7 @@ describe(`FakeHttpClientResponses`, () => {
     inject(
       [HttpTestingController, UserService],
       (httpMock: HttpTestingController, service: UserService) => {
+        let response = null;
         const mockResponse = [{
           id: 'id',
           firstName: 'firstName',
@@ -29,12 +30,14 @@ describe(`FakeHttpClientResponses`, () => {
         const mockUrl = '//localhost:8081/api1/findAllUsers';
 
         service.getAll().subscribe(data => {
-          expect(data).toEqual(mockResponse);
+          response = data;
         });
 
         const mockRequest = httpMock.expectOne((req: HttpRequest<any>) => req.url === mockUrl);
-        expect(mockRequest.request.method).toBe('GET');
         mockRequest.flush(mockResponse);
+
+        expect(response).toEqual(mockResponse);
+        expect(mockRequest.request.method).toBe('GET');
       })
   );
 
