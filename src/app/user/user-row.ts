@@ -1,5 +1,5 @@
-import {UserActions} from './user-actions';
-import {User} from './user';
+import {UserActions} from './model/user-actions';
+import {User} from './model/user';
 import {UserService} from './user.service';
 
 export class UserRow implements UserActions {

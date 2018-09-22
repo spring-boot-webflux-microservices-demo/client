@@ -3,7 +3,7 @@ import {TestBed, inject} from '@angular/core/testing';
 import {HttpClientModule, HttpRequest} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {UserService} from './user.service';
-import {User} from './user';
+import {User} from './model/user';
 
 describe(`FakeHttpClientResponses`, () => {
 

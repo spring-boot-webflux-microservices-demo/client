@@ -3,8 +3,8 @@ import {BehaviorSubject, Observable, of, pipe} from 'rxjs';
 import {UserService} from './user.service';
 import {catchError, finalize} from 'rxjs/operators';
 import {UserRow} from './user-row';
-import {EmptyUser} from './empty-user';
-import {User} from './user';
+import {EmptyUser} from './model/empty-user';
+import {User} from './model/user';
 
 export class UserDatasource implements DataSource<UserRow> {
   private userRows: UserRow[];
