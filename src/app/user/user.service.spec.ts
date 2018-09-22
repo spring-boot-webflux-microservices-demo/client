@@ -1,11 +1,18 @@
 import {TestBed, inject} from '@angular/core/testing';
 
-import {HttpClientModule, HttpParams, HttpRequest} from '@angular/common/http';
+import {HttpClientModule, HttpRequest} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {UserService} from './user.service';
 import {User} from './user';
 
 describe(`FakeHttpClientResponses`, () => {
+
+  const userMock = {
+    id: 'mockId',
+    firstName: 'mockFirstName',
+    lastName: 'mockLastName',
+    age: 0
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -46,22 +53,42 @@ describe(`FakeHttpClientResponses`, () => {
     const http = TestBed.get(HttpTestingController);
     let response = null;
 
-    userService.saveUser(new UserMock()).subscribe(data => {
+    userService.saveUser(new EmptyUserMock()).subscribe(data => {
       response = data;
     });
 
-    const responseMock = {id: 'savedId', firstName: 'savedFirstName', lastName: 'savedLastName', age: 1};
     http.expectOne({
       url: '//localhost:8081/api1/saveUser',
       method: 'POST'
-    }).flush(responseMock);
+    }).flush(userMock);
 
-    expect(response).toEqual(responseMock);
+    expect(response).toEqual(userMock);
   });
 
-  class UserMock implements User {
-    constructor();
-    constructor(public id: string, public firstName: string, public lastName: string, public age: number) {
+  it('should update user', inject([UserService, HttpTestingController],
+    (userService: UserService, http: HttpTestingController) => {
+      let response = null;
+
+      userService.updateUser(userMock).subscribe(data => {
+        response = data;
+      });
+
+      http.expectOne({
+        url: '//localhost:8081/api1/updateUser/' + userMock.id,
+        method: 'PUT'
+      }).flush(userMock);
+    }
+  ));
+
+  class EmptyUserMock implements User {
+    id: string;
+    firstName: string;
+    lastName: string;
+    age: number;
+
+    constructor() {
     }
   }
-});
+
+})
+;
