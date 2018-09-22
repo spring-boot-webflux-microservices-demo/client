@@ -60,12 +60,10 @@ export class UserDatasource implements DataSource<UserRow> {
   }
 
   connect(collectionViewer: CollectionViewer): Observable<UserRow[]> {
-    console.log('Connecting to datasource');
     return this.usersSubject.asObservable();
   }
 
   disconnect(collectionViewer: CollectionViewer): void {
-    console.log('Disconnecting from datasource');
     this.usersSubject.complete();
     this.loadingSubject.complete();
   }
