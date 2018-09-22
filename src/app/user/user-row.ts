@@ -16,14 +16,11 @@ export class UserRow implements UserActions {
     this.editing = false;
     this.focus = false;
     this.userService.saveUser(updatedUser).subscribe(saved => {
-      // this.usersSubject.next(saved);
-      // this.getAllUsersInTable();
     });
     return false;
   }
 
   startEdit(): void {
-    console.log('editing mode');
     this.editing = true;
     this.focus = true;
   }

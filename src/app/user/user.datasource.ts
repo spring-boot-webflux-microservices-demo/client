@@ -27,7 +27,6 @@ export class UserDatasource implements DataSource<UserRow> {
   }
 
   addEmptyUser() {
-    console.log('new table row should be added');
     this.emptyUserRow = new UserRow(new EmptyUser, this.userService);
     this.emptyUserRow.editing = true;
     this.emptyUserRow.focus = true;
