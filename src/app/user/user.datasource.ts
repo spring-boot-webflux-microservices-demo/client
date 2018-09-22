@@ -11,7 +11,6 @@ export class UserDatasource implements DataSource<UserRow> {
 
   private usersSubject = new BehaviorSubject<UserRow[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
-  public loading$ = this.loadingSubject.asObservable();
   private emptyUserRow: UserRow;
 
   constructor(private userService: UserService) {
