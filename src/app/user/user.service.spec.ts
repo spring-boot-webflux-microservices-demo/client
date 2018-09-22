@@ -77,8 +77,25 @@ describe(`FakeHttpClientResponses`, () => {
         url: '//localhost:8081/api1/updateUser/' + userMock.id,
         method: 'PUT'
       }).flush(userMock);
+
+      expect(response).toEqual(userMock);
     }
   ));
+
+  it('should delete user', inject([UserService, HttpTestingController],
+    (userService: UserService, http: HttpTestingController) => {
+      let response = null;
+
+      userService.deleteUser(userMock).subscribe(() => response = userMock);
+
+      http.expectOne({
+          url: '//localhost:8081/api1/deleteUser/' + userMock.id,
+          method: 'DELETE'
+        }
+      ).flush(userMock);
+
+      expect(response).toEqual(userMock);
+    }));
 
   class EmptyUserMock implements User {
     id: string;
