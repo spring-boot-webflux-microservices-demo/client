@@ -14,11 +14,12 @@ describe('userDatasource', () => {
   fit('should fill table with all users', () => {
     const userService = TestBed.get(UserService);
     const userDatasource = new UserDatasource(userService);
+    spyOn(userService, 'getAll').and.callThrough();
 
     userDatasource.getAllUsersInTable();
 
-    console.log('test');
+    expect(userDatasource).not.toBeNull();
+    expect(userService.getAll).toHaveBeenCalled();
   });
-
 
 });
