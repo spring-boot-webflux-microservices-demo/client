@@ -19,7 +19,7 @@ describe('userDatasource', () => {
     });
   });
 
-  fit('should fill table with users', () => {
+  it('should fill table with users', () => {
     const userService = TestBed.get(UserService);
     const userDatasource = new UserDatasource(userService);
     const http = TestBed.get(HttpTestingController);
