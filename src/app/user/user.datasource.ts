@@ -7,11 +7,10 @@ import {EmptyUser} from './model/empty-user';
 import {User} from './model/user';
 
 export class UserDatasource implements DataSource<UserRow> {
-  private userRows: UserRow[];
-
-  private usersSubject = new BehaviorSubject<UserRow[]>([]);
+  public usersSubject = new BehaviorSubject<UserRow[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
   private emptyUserRow: UserRow;
+  private userRows: UserRow[];
 
   constructor(private userService: UserService) {
   }
