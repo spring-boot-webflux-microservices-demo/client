@@ -1,27 +1,30 @@
-import { TestBed, async } from '@angular/core/testing';
-import { AppComponent } from './app.component';
+import {async} from '@angular/core/testing';
+import {AppComponent} from './app.component';
+
 describe('AppComponent', () => {
+  let appComponent;
+
   beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
-    }).compileComponents();
+    appComponent = new AppComponent();
   }));
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  }));
-  it(`should have as title 'client'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('client');
-  }));
-  it('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to client!');
-  }));
+
+  it(`should have as title 'client'`, () => {
+    expect(appComponent.title).toEqual('client');
+  });
+
+  it('should have user title', () => {
+    expect(appComponent.userTitle).toEqual('User');
+  });
+
+  it('should have user description', () => {
+    expect(appComponent.userDescription).toEqual('User content');
+  });
+
+  it( 'should have gadget title', () => {
+    expect(appComponent.gadgetTitle).toEqual('Gadget');
+  });
+
+  it('should have gadget description', () => {
+    expect(appComponent.gadgetDescription).toEqual('Gadget content');
+  });
 });
