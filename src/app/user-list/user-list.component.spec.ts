@@ -7,13 +7,11 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Observable} from 'rxjs';
 
 describe('UserListComponent', () => {
-
   let userListComponent;
   let userService;
   let userServiceGetAllSpy;
 
   beforeEach(async(() => {
-
     userService = jasmine.createSpyObj('UserService', ['getAll']);
     userServiceGetAllSpy = userService.getAll.and.returnValue(Observable.create([{
       id: 'id',
@@ -32,7 +30,7 @@ describe('UserListComponent', () => {
 
   }));
 
-  it('should create', () => {
+  it('should get all users and fill table datasource on init', () => {
     userListComponent = new UserListComponent(userService);
     userListComponent.ngOnInit();
     expect(userServiceGetAllSpy.calls.any()).toBe(true, 'userService getAll was called');
