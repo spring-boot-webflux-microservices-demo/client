@@ -7,6 +7,8 @@ export class UserRow implements UserActions {
   focus: boolean;
 
   constructor(public user: User, private userService: UserService) {
+    this.editing = false;
+    this.focus = false;
   }
 
   cancel(): void {
@@ -15,8 +17,7 @@ export class UserRow implements UserActions {
   confirmEditCreate(updatedUser: User): boolean {
     this.editing = false;
     this.focus = false;
-    this.userService.saveUser(updatedUser).subscribe(saved => {
-    });
+    this.userService.saveUser(updatedUser).subscribe();
     return false;
   }
 
