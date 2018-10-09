@@ -68,4 +68,19 @@ describe('userDatasource', () => {
     expect(userRow.focus).toEqual(false);
   });
 
+  it('should update existing user row', () => {
+    const userServiceSpy = jasmine.createSpyObj('UserService', ['updateUser']);
+    const userRow = new UserRow(userMock, userServiceSpy);
+    const userServiceUpdateUserSpy = userServiceSpy.updateUser.and.returnValue(new Observable(o => {
+      o.next(userMock);
+      o.complete();
+    }));
+    userRow.user.id = 'existingId';
+    userDatasource = new UserDatasource(userServiceSpy);
+    userDatasource.add(userRow);
+    expect(userServiceUpdateUserSpy.calls.any()).toBe(true);
+    expect(userRow.editing).toEqual(false);
+    expect(userRow.focus).toEqual(false);
+  });
+
 });
