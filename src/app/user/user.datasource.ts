@@ -41,13 +41,11 @@ export class UserDatasource implements DataSource<UserRow> {
   }
 
   private saveNewUser(user: User): void {
-    this.userService.saveUser(user).subscribe(u => {
-    });
+    this.userService.saveUser(user).subscribe();
   }
 
   private updateExistingUser(user: User): void {
-    this.userService.updateUser(user).subscribe(u => {
-    });
+    this.userService.updateUser(user).subscribe();
   }
 
   delete(user: User): void {
