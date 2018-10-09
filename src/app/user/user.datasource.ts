@@ -13,6 +13,7 @@ export class UserDatasource implements DataSource<UserRow> {
   private userRows: UserRow[];
 
   constructor(private userService: UserService) {
+    this.userRows = [];
   }
 
   getAllUsersInTable() {

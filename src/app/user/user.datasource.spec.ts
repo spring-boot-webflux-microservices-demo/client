@@ -1,10 +1,13 @@
-import {TestBed} from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {UserService} from './user.service';
 import {UserDatasource} from './user.datasource';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import {EmptyUser} from './model/empty-user';
 
 describe('userDatasource', () => {
+  let userService;
+  let userDatasource;
 
   const userMock = {
     id: 'id',
@@ -13,15 +16,15 @@ describe('userDatasource', () => {
     age: 55
   };
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, HttpClientTestingModule]
     });
-  });
+    userService = TestBed.get(UserService);
+    userDatasource = new UserDatasource(userService);
+  }));
 
   it('should fill table with users', () => {
-    const userService = TestBed.get(UserService);
-    const userDatasource = new UserDatasource(userService);
     const http = TestBed.get(HttpTestingController);
     const mockResponse = [{
       id: 'id',
@@ -40,5 +43,13 @@ describe('userDatasource', () => {
     expect(userDatasource).not.toBeNull();
     expect(userDatasource.usersSubject.getValue()[0].user).toEqual(userMock);
   });
+
+  it('should add empty user with active editing and focus statuses', () => {
+    userDatasource.addEmptyUser();
+    expect(userDatasource.usersSubject.getValue()[0].user).toEqual(new EmptyUser());
+    expect(userDatasource.usersSubject.getValue()[0].editing).toEqual(true);
+    expect(userDatasource.usersSubject.getValue()[0].focus).toEqual(true);
+  });
+
 
 });
