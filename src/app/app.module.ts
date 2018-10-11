@@ -16,15 +16,13 @@ import {
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material';
-import { AddUserDialogComponent } from './add-user-dialog/add-user-dialog.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserListComponent,
-    GadgetListComponent,
-    AddUserDialogComponent
+    GadgetListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +39,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     MatTableModule,
     MatTabsModule
   ],
-  entryComponents: [AddUserDialogComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
