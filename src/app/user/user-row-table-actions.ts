@@ -1,8 +1,8 @@
-import {UserActions} from './model/user-actions';
 import {User} from './model/user';
 import {UserService} from './user.service';
+import {TableActions} from '../table-actions';
 
-export class UserRow implements UserActions {
+export class UserRowTableActions implements TableActions {
   editing: boolean;
   focus: boolean;
 

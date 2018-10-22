@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GadgetService} from '../gadget/gadget.service';
+import {UserDatasource} from "../user/user.datasource";
+import {GadgetDatasource} from "../gadget/gadget.datasource";
 
 @Component({
   selector: 'app-gadget-list',
@@ -7,16 +9,15 @@ import {GadgetService} from '../gadget/gadget.service';
   styleUrls: ['./gadget-list.component.css']
 })
 export class GadgetListComponent implements OnInit {
-  gadgets: Array<any>;
+  dataSource: GadgetDatasource;
   gadgetColumns: string[] = ['position', 'type', 'specifications'];
 
   constructor(private gadgetService: GadgetService) {
   }
 
   ngOnInit() {
-    this.gadgetService.getAll().subscribe(g => {
-      this.gadgets = g;
-    });
+    this.dataSource = new GadgetDatasource(this.gadgetService);
+    this.dataSource.getAllGadgetsInTable();
+    }
   }
 
-}

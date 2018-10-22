@@ -1,12 +1,12 @@
-import {UserRow} from './user-row';
+import {UserRowTableActions} from './user-row-table-actions';
 import {async, TestBed} from '@angular/core/testing';
 import {UserService} from './user.service';
 import {Observable} from 'rxjs';
 import {User} from './model/user';
 
-describe('UserRow', () => {
+describe('UserRowTableActions', () => {
 
-  let userRow: UserRow;
+  let userRow: UserRowTableActions;
   let userService;
 
   beforeEach(async(() => {
@@ -16,7 +16,7 @@ describe('UserRow', () => {
       ]
     });
     userService = TestBed.get(UserService);
-    userRow = new UserRow(new UserMock(), userService);
+    userRow = new UserRowTableActions(new UserMock(), userService);
   }));
 
   class UserMock implements User {

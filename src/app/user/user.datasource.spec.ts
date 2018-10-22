@@ -4,7 +4,7 @@ import {UserDatasource} from './user.datasource';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {EmptyUser} from './model/empty-user';
-import {UserRow} from './user-row';
+import {UserRowTableActions} from './user-row-table-actions';
 import {Observable} from 'rxjs';
 
 describe('userDatasource', () => {
@@ -55,7 +55,7 @@ describe('userDatasource', () => {
 
   it('should add user row', () => {
     const userServiceSpy = jasmine.createSpyObj('UserService', ['saveUser']);
-    const userRow = new UserRow(userMock, userServiceSpy);
+    const userRow = new UserRowTableActions(userMock, userServiceSpy);
     const userServiceSaveUserSpy = userServiceSpy.saveUser.and.returnValue(new Observable(o => {
       o.next(userMock);
       o.complete();
@@ -70,7 +70,7 @@ describe('userDatasource', () => {
 
   it('should update existing user row', () => {
     const userServiceSpy = jasmine.createSpyObj('UserService', ['updateUser']);
-    const userRow = new UserRow(userMock, userServiceSpy);
+    const userRow = new UserRowTableActions(userMock, userServiceSpy);
     const userServiceUpdateUserSpy = userServiceSpy.updateUser.and.returnValue(new Observable(o => {
       o.next(userMock);
       o.complete();
