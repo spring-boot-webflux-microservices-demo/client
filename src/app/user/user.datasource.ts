@@ -15,7 +15,6 @@ export class UserDatasource implements DataSource<UserRowTableActions> {
   constructor(private userService: UserService) {
     this.userRows = [];
   }
-
   getAllUsersInTable() {
     this.userService.getAll().pipe(
       catchError(() => of([])),

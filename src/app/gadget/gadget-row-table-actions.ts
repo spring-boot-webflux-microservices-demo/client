@@ -6,7 +6,7 @@ export class GadgetRowTableActions implements TableActions {
   editing: boolean;
   focus: boolean;
 
-  constructor(private gadget: Gadget, private gadgetService: GadgetService) {
+  constructor(public gadget: Gadget, private gadgetService: GadgetService) {
     this.editing = false;
     this.focus = false;
   }
