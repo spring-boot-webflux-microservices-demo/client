@@ -10,7 +10,7 @@ import {GadgetDatasource} from "../gadget/gadget.datasource";
 })
 export class GadgetListComponent implements OnInit {
   dataSource: GadgetDatasource;
-  gadgetColumns: string[] = ['position', 'type', 'specifications'];
+  gadgetColumns: string[] = ['position', 'type', 'specifications', 'actions'];
 
   constructor(private gadgetService: GadgetService) {
   }
