@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {GadgetService} from '../gadget/gadget.service';
-import {UserDatasource} from "../user/user.datasource";
-import {GadgetDatasource} from "../gadget/gadget.datasource";
+import {GadgetDatasource} from '../gadget/gadget.datasource';
 
 @Component({
   selector: 'app-gadget-list',
