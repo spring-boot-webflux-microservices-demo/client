@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Gadget} from "./gadget";
+import {Gadget} from './gadget';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class GadgetService {
   }
 
   saveGadget(gadget: Gadget): Observable<any> {
-    return this.http.post('', gadget, {
+    return this.http.post('//localhost:8082/api2/saveGadget', gadget, {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8'
       }
@@ -24,7 +24,7 @@ export class GadgetService {
   }
 
   updateGadget(gadget: Gadget): Observable<any> {
-    return this.http.put('' + gadget.id, gadget, {
+    return this.http.put('//localhost:8082/api2/updateGadget/' + gadget.id, gadget, {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8'
       }
@@ -32,7 +32,7 @@ export class GadgetService {
   }
 
   deleteGadget(gadget: Gadget): Observable<any> {
-    return this.http.delete('' + gadget.id);
+    return this.http.delete('//localhost:8082/api2/deleteGadget/' + gadget.id);
   }
 
 }
