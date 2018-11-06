@@ -6,7 +6,6 @@ export class EmptyGadget implements Gadget {
   specifications: string;
 
   constructor() {
-    this.id = '';
     this.type = '';
     this.specifications = '';
   }
