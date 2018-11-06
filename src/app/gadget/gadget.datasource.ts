@@ -3,9 +3,8 @@ import {GadgetRowTableActions} from './gadget-row-table-actions';
 import {BehaviorSubject, Observable, of} from 'rxjs';
 import {EmptyGadget} from './empty-gadget';
 import {GadgetService} from './gadget.service';
-import {catchError, finalize} from "rxjs/operators";
-import {Gadget} from "./gadget";
-import {User} from "../user/model/user";
+import {catchError, finalize} from 'rxjs/operators';
+import {Gadget} from './gadget';
 
 export class GadgetDatasource implements DataSource<GadgetRowTableActions> {
   public gadgetSubject = new BehaviorSubject<GadgetRowTableActions[]>([]);
