@@ -60,7 +60,7 @@ describe('gadgetDatasource', () => {
     }));
     gadgetRow.gadget.id = undefined;
     gadgetDatasource = new GadgetDatasource(gadgetServiceSpy);
-    gadgetDatasource.add(gadgetRow);
+    gadgetDatasource.onAdd(gadgetRow);
     expect(gadgetServiceSaveGadgetSpy.calls.any()).toBe(true);
     expect(gadgetRow.editing).toEqual(false);
     expect(gadgetRow.focus).toEqual(false);
@@ -75,7 +75,7 @@ describe('gadgetDatasource', () => {
     }));
     gadgetRow.gadget.id = 'existingId';
     gadgetDatasource = new GadgetDatasource(gadgetServiceSpy);
-    gadgetDatasource.add(gadgetRow);
+    gadgetDatasource.onAdd(gadgetRow);
     expect(gadgetServiceUpdateGadgetSpy.calls.any()).toBe(true);
     expect(gadgetRow.editing).toEqual(false);
     expect(gadgetRow.focus).toEqual(false);
