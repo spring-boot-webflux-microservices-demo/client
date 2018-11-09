@@ -4,8 +4,8 @@ import {GadgetDatasource} from './gadget.datasource';
 import {HttpClientModule} from '@angular/common/http';
 import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import {EmptyGadget} from './empty-gadget';
-import {GadgetRowTableActions} from './gadget-row-table-actions';
 import {Observable} from 'rxjs';
+import {GadgetTableRow} from './gadget-table-row';
 
 describe('gadgetDatasource', () => {
   let gadgetService;
@@ -53,7 +53,7 @@ describe('gadgetDatasource', () => {
 
   it('should add gadget row', () => {
     const gadgetServiceSpy = jasmine.createSpyObj('GadgetService', ['saveGadget']);
-    const gadgetRow = new GadgetRowTableActions(gadgetMock, gadgetServiceSpy);
+    const gadgetRow = new GadgetTableRow(gadgetMock);
     const gadgetServiceSaveGadgetSpy = gadgetServiceSpy.saveGadget.and.returnValue(new Observable(o => {
       o.next(gadgetMock);
       o.complete();
@@ -68,7 +68,7 @@ describe('gadgetDatasource', () => {
 
   it('should update existing gadget row', () => {
     const gadgetServiceSpy = jasmine.createSpyObj('GadgetService', ['updateGadget']);
-    const gadgetRow = new GadgetRowTableActions(gadgetMock, gadgetServiceSpy);
+    const gadgetRow = new GadgetTableRow(gadgetMock);
     const gadgetServiceUpdateGadgetSpy = gadgetServiceSpy.updateGadget.and.returnValue(new Observable(o => {
       o.next(gadgetMock);
       o.complete();
