@@ -17,6 +17,12 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {RouterModule, Routes} from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: 'users', component: UserListComponent},
+  {path: 'gadgets', component: GadgetListComponent}
+];
 
 @NgModule({
   declarations: [
@@ -25,6 +31,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     GadgetListComponent
   ],
   imports: [
+    RouterModule.forRoot(appRoutes, {enableTracing: false}),
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
@@ -42,4 +49,5 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

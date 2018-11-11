@@ -2,13 +2,14 @@
   <span>Welcome to {{title}}</span>
 </mat-toolbar>
 
-<mat-tab-group>
+<mat-tab-group color="primary" (selectedTabChange)="onTabClick($event)">
   <mat-tab label="{{userTitle}}">
     <h1>{{userDescription}}</h1>
-    <app-user-list></app-user-list>
   </mat-tab>
   <mat-tab label="{{gadgetTitle}}">
     <h1>{{gadgetDescription}}</h1>
-    <app-gadget-list></app-gadget-list>
   </mat-tab>
 </mat-tab-group>
+
+<router-outlet></router-outlet>
+
