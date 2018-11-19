@@ -12,11 +12,11 @@ export class GadgetService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//localhost:8082/api2/findAllGadgets');
+    return this.http.get('//localhost:8444/api2/findAllGadgets');
   }
 
   saveGadget(gadget: Gadget): Observable<any> {
-    return this.http.post('//localhost:8082/api2/saveGadget', gadget, {
+    return this.http.post('//localhost:8444/api2/saveGadget', gadget, {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8'
       }
@@ -24,7 +24,7 @@ export class GadgetService {
   }
 
   updateGadget(gadget: Gadget): Observable<any> {
-    return this.http.put('//localhost:8082/api2/updateGadget/' + gadget.id, gadget, {
+    return this.http.put('//localhost:8444/api2/updateGadget/' + gadget.id, gadget, {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8'
       }
@@ -32,7 +32,7 @@ export class GadgetService {
   }
 
   deleteGadget(gadget: Gadget): Observable<any> {
-    return this.http.delete('//localhost:8082/api2/deleteGadget/' + gadget.id);
+    return this.http.delete('//localhost:8444/api2/deleteGadget/' + gadget.id);
   }
 
 }

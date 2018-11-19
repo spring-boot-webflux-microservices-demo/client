@@ -10,11 +10,11 @@ export class UserService {
   }
 
   getAll(): Observable<any> {
-    return this.http.get('//localhost:8081/api1/findAllUsers');
+    return this.http.get('//localhost:8443/api1/findAllUsers');
   }
 
   saveUser(user: User): Observable<any> {
-    return this.http.post('//localhost:8081/api1/saveUser', user, {
+    return this.http.post('//localhost:8443/api1/saveUser', user, {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8'
       }
@@ -22,7 +22,7 @@ export class UserService {
   }
 
   updateUser(user: User): Observable<any> {
-    return this.http.put('//localhost:8081/api1/updateUser/' + user.id, user, {
+    return this.http.put('//localhost:8443/api1/updateUser/' + user.id, user, {
       headers: {
         'Content-Type': 'application/json;charset=UTF-8'
       }
@@ -30,6 +30,6 @@ export class UserService {
   }
 
   deleteUser(user: User): Observable<any> {
-    return this.http.delete('//localhost:8081/api1/deleteUser/' + user.id);
+    return this.http.delete('//localhost:8443/api1/deleteUser/' + user.id);
   }
 }
